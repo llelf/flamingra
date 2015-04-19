@@ -1,6 +1,6 @@
 
 name:                flamingra
-version:             0.1.0.0
+version:             0.1.1
 synopsis:            FlameGraphs of profiling
 description:         Hack to turn the profiling output into the format suitable for FlameGraph.
                      It will be (kind of) interactive (e.g. <http://lelf.lu/files/pandoc.svg>).
