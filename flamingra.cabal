@@ -10,7 +10,7 @@ maintainer:          me@lelf.lu
 -- copyright:           
 category:            Development
 build-type:          Simple
-extra-doc-files:     pandoc.svg
+extra-doc-files:     pandoc.svg changelog
 cabal-version:       >=1.10
 tested-with:         GHC==7.8.3
 
