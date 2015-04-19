@@ -7,7 +7,7 @@ import qualified Pipes.Prelude as P
 import Control.Monad
 import Options.Applicative
 import System.IO
-import System.Exit
+import System.Exit (exitWith, ExitCode(..))
 import Control.Monad.Trans.Either
 
 
