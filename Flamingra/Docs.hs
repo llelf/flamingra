@@ -1,5 +1,5 @@
 -- |
--- It will be (kind of) interactive (e.g. <http://lelf.lu/files/pandoc.svg>).
+-- It will be (kind of) interactive (e.g. <http://lelf.lu/files/pandoc.svg>)
 --                      .
 -- <<pandoc.svg>>
 --  
