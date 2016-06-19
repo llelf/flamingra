@@ -6,8 +6,9 @@
 -- = TL;DR (and the only one available) guide:
 -- 
 -- > some-program +RTS -P
--- > wget https://raw.githubusercontent.com/brendangregg/FlameGraph/master/flamegrph.pl
--- > flamingra some-program.prof | perl flamegraph.pl > picturesque.svg
+-- > wget https://github.com/brendangregg/FlameGraph/raw/master/flamegraph.pl
+-- > chmod +x flamegraph.pl
+-- > flamingra some-program.prof | ./flamegraph.pl > picturesque.svg
 -- 
 -- = Usage:
 -- 
