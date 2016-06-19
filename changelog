@@ -1,7 +1,4 @@
-2015-04-19  Antonio Nikishaev  <me@lelf.lu>
+* 0.2
 
-	* 0.1.1: Restrict deps
-
-	* 0.1.1.1: Dear diary, FUCK haddock, I've simply moved docs to Flamingra.Docs;
-                   ghc-7.10.1
+Parse GHC-HEAD profiling reports too (new SRC field)
 

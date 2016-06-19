@@ -1,6 +1,6 @@
 
 name:                flamingra
-version:             0.1.1.1
+version:             0.2
 synopsis:            FlameGraphs of profiling
 description:         Hack to turn the profiling output into the format suitable for FlameGraph.
 license:             BSD3
