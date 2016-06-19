@@ -1,13 +1,14 @@
 -- |
--- It will be (kind of) interactive (e.g. <http://lelf.lu/files/pandoc.svg>).
+-- It will be (kind of) interactive (e.g. <http://lelf.lu/files/pandoc.svg>)
 --                      .
 -- <<pandoc.svg>>
 --  
 -- = TL;DR (and the only one available) guide:
 -- 
 -- > some-program +RTS -P
--- > wget https://raw.githubusercontent.com/brendangregg/FlameGraph/master/flamegrph.pl
--- > flamingra some-program.prof | perl flamegraph.pl > picturesque.svg
+-- > wget https://github.com/brendangregg/FlameGraph/raw/master/flamegraph.pl
+-- > chmod +x flamegraph.pl
+-- > flamingra some-program.prof | ./flamegraph.pl > picturesque.svg
 -- 
 -- = Usage:
 -- 

@@ -1,3 +1,4 @@
+{-# LANGUAGE RecordWildCards #-}
 module Main where
 
 import Text.Printf
@@ -15,6 +16,16 @@ import Control.Monad.Trans.Either
 type State = ([String], Int)
 type Foldee = (State, Maybe String)
 
+data CostCentre = CostCentre {
+      ccLevel :: Int,
+      ccName :: String,
+      ccModule :: String,
+      ccTicks :: Integer
+    }
+
+costCentreFormatFun :: CostCentre -> String
+costCentreFormatFun cc = printf "%s:%s" (ccModule cc) (ccName cc)
+
 -- COST CENTRE    ticks
 -- A       …      n₁                     A n₁
 --  B      …      n₂            ===>     A;B n₂
@@ -22,14 +33,33 @@ type Foldee = (State, Maybe String)
 -- 
 conv :: Foldee -> String -> Foldee
 conv (state@(stack,prevLevel),_) str
-    | length ws == 10 && ticks>0 = ((stack',level), Just $ printf "%s %d" (intercalate ";" stack') ticks)
-    | otherwise                  = (state,          Nothing)
-    where 
+    | Just cc@CostCentre{..} <- parseLine str,
+       ccTicks > 0
+           = let stack' = take (length stack - (prevLevel - ccLevel + 1)) stack <> [fun]
+                 fun    = costCentreFormatFun cc
+             in ((stack', ccLevel), Just $ printf "%s %d" (intercalate ";" stack') ccTicks)
+    | otherwise
+           = (state, Nothing)
+
+
+
+parseLine :: String -> Maybe CostCentre
+parseLine str = costCentre <$> params
+    where
+      params | length ws == 10 = Just fields10
+             | length ws == 11 = Just fields11
+             | otherwise       = Nothing
+
+      costCentre (fun,mod,ticks) = CostCentre level fun mod (read ticks)
+
       ws = words str
       level = length . takeWhile (==' ') $ str
-      fun = printf "%s:%s" (ws!!1) (ws!!0)
-      ticks = read (ws!!8) :: Int
-      stack' = take (length stack - (prevLevel-level+1)) stack ++ [fun]
+
+      fields11 = (fun,mod,ticks)
+          where [fun,mod,_src,_no,_entries,_indTime,_indAlloc,_inhTime,_inhAlloc,ticks,_bytes] = ws
+      fields10 = (fun,mod,ticks)
+          where [fun,mod,_no,_entries,_indTime,_indAlloc,_inhTime,_inhAlloc,ticks,_bytes] = ws
+
 
 
 data Status = OK | PTooSmall deriving Show
